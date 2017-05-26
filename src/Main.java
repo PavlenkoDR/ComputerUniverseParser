@@ -38,9 +38,11 @@ public class Main {
             if (line.indexOf("delay=") 	!= -1) sdelay = line.replace("delay=", "");
         }
 		String message = "", finded = "", prewfinded;
-		String params = "user_id="+sid+"&message=";
+		//String params = "user_id="+sid+"&message=";//to message
+		String params = "owner_id=-"+sid+"&from_group=1&message=";//wall post
 		String token = "access_token="+stoken;
-		String method = "messages.send";
+		//String method = "messages.send"; //to message
+		String method = "wall.post"; //wall post
 		String request;
 		String url = surl;
 		Document doc = null;
@@ -81,8 +83,8 @@ public class Main {
 			message = message.replace(" ", "%20");
 			message = message.replace(":", "%3A");
 			message = message.replace("/", "%2F");
-			request = "https://api.vk.com/method/" + method + "?" + params
-					+ message + "&" + token;
+			//request = "https://api.vk.com/method/" + method + "?" + params + message + "&" + token;//to message
+			request = "https://api.vk.com/method/" + method + "?" + params + message + "&" + token;//wall post
 			flag = false;
 			while (!flag)
 				try {
